@@ -7,10 +7,10 @@ api_set:
     ExcelAPI: '1.15'
 script:
     content: |
-        $("#setup").click(() => tryCatch(setup));
-        $("#select-D3").click(() => tryCatch(selectD3));
-        $("#get-all-dependents").click(() => tryCatch(getAllDependents));
-        $("#clear-highlighting").click(() => tryCatch(clearFormatting));
+        $("#setup").on("click", () => tryCatch(setup));
+        $("#select-D3").on("click", () => tryCatch(selectD3));
+        $("#get-all-dependents").on("click", () => tryCatch(getAllDependents));
+        $("#clear-highlighting").on("click", () => tryCatch(clearFormatting));
 
         async function selectD3() {
           // This function selects a cell with dependents across both worksheets.
@@ -123,17 +123,17 @@ script:
     language: typescript
 template:
     content: |-
-        <section class="ms-font-m">
+        <section class="ms-Fabric ms-font-m">
           <p>This sample shows how to find and highlight the dependents of the currently selected cell. </p>
           <p>Dependent cells contain formulas that refer to other cells.</p>
         </section>
-        <section class="setup ms-font-m">
+        <section class="ms-Fabric setup ms-font-m">
           <h3>Set up</h3> 
           <button id="setup" class="ms-Button"> 
             <span class="ms-Button-label">Add sample data</span> 
           </button>
         </section>
-        <section class="samples ms-font-m">
+        <section class="ms-Fabric samples ms-font-m">
           <h3>Try it out</h3>
           <p>Cell D3 has dependents across worksheets.</p>
           <button id="select-D3" class="ms-Button">
@@ -161,11 +161,11 @@ style:
         }
     language: css
 libraries: |
-    https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+    https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js
     @types/office-js
 
-    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
-    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+    office-ui-fabric-core@11.1.0/dist/css/fabric.min.css
+    office-ui-fabric-js@1.5.0/dist/css/fabric.components.min.css
 
     core-js@2.4.1/client/core.min.js
     @types/core-js

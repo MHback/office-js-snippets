@@ -4,11 +4,11 @@ description: 'Creates a new, empty presentation and creates a new presentation b
 author: OfficeDev
 host: POWERPOINT
 api_set:
-    PowerPoint: 1.1
+    PowerPoint: '1.1'
 script:
     content: |
-        $("#create-new-blank-presentation").click(() => tryCatch(createBlankPresentation));
-        $("#file").change(() => tryCatch(createPresentationFromExisting));
+        $("#create-new-blank-presentation").on("click", () => tryCatch(createBlankPresentation));
+        $("#file").on("change", () => tryCatch(createPresentationFromExisting));
 
         function createBlankPresentation() {
             PowerPoint.createPresentation();
@@ -19,14 +19,14 @@ script:
             const reader = new FileReader();
 
             reader.onload = (event) => {
-                // Remove the metadata before the base64-encoded string.
+                // Remove the metadata before the Base64-encoded string.
                 const startIndex = reader.result.toString().indexOf("base64,");
                 const copyBase64 = reader.result.toString().substr(startIndex + 7);
 
                 PowerPoint.createPresentation(copyBase64);        
             };
 
-            // Read in the file as a data URL so we can parse the base64-encoded string.
+            // Read in the file as a data URL so we can parse the Base64-encoded string.
             reader.readAsDataURL(myFile.files[0]);
         }
 
@@ -42,11 +42,11 @@ script:
     language: typescript
 template:
     content: |-
-        <section class="ms-font-m">
+        <section class="ms-Fabric ms-font-m">
             <p>This sample shows how to create a new, empty presentation and how to create a new presentation by copying an existing one.</p>
         </section>
 
-        <section class="samples ms-font-m">
+        <section class="ms-Fabric samples ms-font-m">
             <h3>Try it out</h3>
             <p><b>Create empty presentation</b></p>
             <button id="create-new-blank-presentation" class="ms-Button">
@@ -73,11 +73,11 @@ style:
         }
     language: css
 libraries: |
-    https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+    https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js
     @types/office-js
 
-    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
-    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+    office-ui-fabric-core@11.1.0/dist/css/fabric.min.css
+    office-ui-fabric-js@1.5.0/dist/css/fabric.components.min.css
 
     core-js@2.4.1/client/core.min.js
     @types/core-js

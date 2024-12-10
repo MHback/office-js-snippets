@@ -1,14 +1,15 @@
 order: 4
 id: excel-data-types-error-values
-name: 'Data types: Set error values'
-description: This sample shows how to set a cell value to an error data type.
+name: 'Data types: Set and change error values'
+description: 'This sample shows how to set a cell value to an error data type, and then update the value of cells that contain an error data type.'
 host: EXCEL
 api_set:
     ExcelApi: '1.16'
 script:
     content: |
-        $("#setup").click(() => tryCatch(setup));
-        $("#setBusyError").click(() => tryCatch(setBusyError));
+        $("#setup").on("click", () => tryCatch(setup));
+        $("#set-busy-error").on("click", () => tryCatch(setBusyError));
+        $("#change-busy-error").on("click", () => tryCatch(changeBusyError));
 
         async function setBusyError() {
           // This function sets the value of cell A1 to a #BUSY! error using data types.
@@ -17,7 +18,7 @@ script:
             const sheet = context.workbook.worksheets.getItemOrNullObject("Sample");
             const range = sheet.getRange("A1");
 
-            // Get the error data type and set its type to `busy`. 
+            // Get the error data type and set its type to `busy`.
             const error: Excel.ErrorCellValue = {
               type: Excel.CellValueType.error,
               errorType: Excel.ErrorCellValueType.busy
@@ -29,13 +30,35 @@ script:
           });
         }
 
+        async function changeBusyError() {
+          // This function checks if the used range contains a #BUSY! error, and then updates all the cells in the range that contain the error.
+          await Excel.run(async (context) => {
+            // Retrieve the Sample worksheet and the used range on that sheet.
+            const sheet = context.workbook.worksheets.getItemOrNullObject("Sample");
+            const usedRange = sheet.getUsedRange();
+
+            // Load the `valuesAsJson` property for comparison.
+            usedRange.load("valuesAsJson");
+            await context.sync();
+
+            // Check if the used range contains a #BUSY! error.
+            if (usedRange.valuesAsJson[0][0]["errorType"] == Excel.ErrorCellValueType.busy) {
+              // If the used range contains a #BUSY! error, load and change those values.
+              usedRange.load("values");
+              await context.sync();
+              usedRange.values = [["Process unavailable."]];
+            }
+
+            await context.sync();
+          });
+        }
+
         async function setup() {
           await Excel.run(async (context) => {
             // Create a new worksheet called "Sample" and activate it.
             context.workbook.worksheets.getItemOrNullObject("Sample").delete();
             const sheet = context.workbook.worksheets.add("Sample");
             sheet.activate();
-
             await context.sync();
           });
         }
@@ -52,17 +75,20 @@ script:
     language: typescript
 template:
     content: |-
-        <section class="ms-font-m">
-          <p>This sample shows how to set the value of cell A1 to the #BUSY! error data type.</p>
+        <section class="ms-Fabric ms-font-m">
+          <p>This sample shows how to set the value of cell A1 to the #BUSY! error data type. The sample then checks to see if the worksheet contains a #BUSY! error, and then updates all cells that contain a #BUSY! error.</p>
         </section>
-        <section class="setup ms-font-m">
+        <section class="ms-Fabric setup ms-font-m">
           <h3>Set up</h3>
           <button id="setup" class="ms-Button">
             <span class="ms-Button-label">Add worksheet</span>
           </button>
           <h3>Try it out</h3>
-          <button id="setBusyError" class="ms-Button">
-            <span class="ms-Button-label">Set A1 to busy error</span>
+          <button id="set-busy-error" class="ms-Button">
+            <span class="ms-Button-label">Set A1 to #BUSY! error</span>
+          </button>
+          <button id="change-busy-error" class="ms-Button">
+            <span class="ms-Button-label">Change output of cells with #BUSY! error</span>
           </button>
         </section>
     language: html
@@ -80,11 +106,11 @@ style:
         }
     language: css
 libraries: |
-    https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+    https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js
     @types/office-js
 
-    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
-    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+    office-ui-fabric-core@11.1.0/dist/css/fabric.min.css
+    office-ui-fabric-js@1.5.0/dist/css/fabric.components.min.css
 
     core-js@2.4.1/client/core.min.js
     @types/core-js

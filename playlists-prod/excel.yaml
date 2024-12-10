@@ -331,11 +331,22 @@
   api_set:
     ExcelApi: '1.16'
 - id: excel-data-types-error-values
-  name: 'Data types: Set error values'
+  name: 'Data types: Set and change error values'
   fileName: data-types-error-values.yaml
-  description: This sample shows how to set a cell value to an error data type.
+  description: >-
+    This sample shows how to set a cell value to an error data type, and then
+    update the value of cells that contain an error data type.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/excel/20-data-types/data-types-error-values.yaml
+  group: Data Types
+  api_set:
+    ExcelApi: '1.16'
+- id: excel-data-types-icons
+  name: 'Data types: Create entity icons'
+  fileName: data-types-entity-icons.yaml
+  description: Display all the icons available for entity data types.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/excel/20-data-types/data-types-entity-icons.yaml
   group: Data Types
   api_set:
     ExcelApi: '1.16'
@@ -378,7 +389,7 @@
   name: Get file using slicing
   fileName: get-file-in-slices-async.yaml
   description: >-
-    Uses slicing to get the byte array and base64-encoded string that represent
+    Uses slicing to get the byte array and Base64-encoded string that represent
     the current document.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/excel/26-document/get-file-in-slices-async.yaml
@@ -1122,6 +1133,15 @@
   group: Workbook
   api_set:
     ExcelAPI: '1.13'
+- id: excel-workbook-built-in-function
+  name: Use built-in Excel functions
+  fileName: workbook-built-in-functions.yaml
+  description: Use the VLOOKUP and SUM built-in Excel functions.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/excel/50-workbook/workbook-built-in-functions.yaml
+  group: Workbook
+  api_set:
+    ExcelAPI: '1.2'
 - id: excel-worksheet-active-worksheet
   name: Active worksheet
   fileName: active-worksheet.yaml

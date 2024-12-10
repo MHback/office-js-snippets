@@ -36,6 +36,108 @@
   group: Content Controls
   api_set:
     WordApi: '1.1'
+- id: word-content-controls-content-control-onadded-event
+  name: On adding content controls
+  fileName: content-control-onadded-event.yaml
+  description: >-
+    Registers, triggers, and deregisters onAdded event that tracks the addition
+    of content controls.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/10-content-controls/content-control-onadded-event.yaml
+  group: Content Controls
+  api_set:
+    WordApi: '1.5'
+- id: word-content-controls-content-control-onentered-event
+  name: On entering content controls
+  fileName: content-control-onentered-event.yaml
+  description: >-
+    Registers, triggers, and deregisters onEntered event that tracks when the
+    cursor is placed within content controls.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/10-content-controls/content-control-onentered-event.yaml
+  group: Content Controls
+  api_set:
+    WordApi: '1.5'
+- id: word-content-controls-content-control-onselectionchanged-event
+  name: On changing selection in content controls
+  fileName: content-control-onselectionchanged-event.yaml
+  description: >-
+    Registers, triggers, and deregisters onSelectionChanged event that tracks
+    when selections are changed in content controls.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/10-content-controls/content-control-onselectionchanged-event.yaml
+  group: Content Controls
+  api_set:
+    WordApi: '1.5'
+- id: word-content-controls-content-control-ondatachanged-event
+  name: On changing data in content controls
+  fileName: content-control-ondatachanged-event.yaml
+  description: >-
+    Registers, triggers, and deregisters onDataChanged event that tracks when
+    data is changed in content controls.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/10-content-controls/content-control-ondatachanged-event.yaml
+  group: Content Controls
+  api_set:
+    WordApi: '1.5'
+- id: word-content-controls-content-control-onexited-event
+  name: On exiting content controls
+  fileName: content-control-onexited-event.yaml
+  description: >-
+    Registers, triggers, and deregisters onExited event that tracks when the
+    cursor is removed from within content controls.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/10-content-controls/content-control-onexited-event.yaml
+  group: Content Controls
+  api_set:
+    WordApi: '1.5'
+- id: word-content-controls-content-control-ondeleted-event
+  name: On deleting content controls
+  fileName: content-control-ondeleted-event.yaml
+  description: >-
+    Registers, triggers, and deregisters onDeleted event that tracks the removal
+    of content controls.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/10-content-controls/content-control-ondeleted-event.yaml
+  group: Content Controls
+  api_set:
+    WordApi: '1.5'
+- id: word-content-controls-insert-and-change-checkbox-content-control
+  name: Manage checkbox content controls
+  fileName: insert-and-change-checkbox-content-control.yaml
+  description: 'Inserts, updates, retrieves, and deletes checkbox content controls.'
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/10-content-controls/insert-and-change-checkbox-content-control.yaml
+  group: Content Controls
+  api_set:
+    WordApi: '1.7'
+- id: word-content-controls-insert-and-change-combo-box-content-control
+  name: Manage combo box content controls
+  fileName: insert-and-change-combo-box-content-control.yaml
+  description: 'Inserts, updates, and deletes combo box content controls.'
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/10-content-controls/insert-and-change-combo-box-content-control.yaml
+  group: Content Controls
+  api_set:
+    WordApi: '1.9'
+- id: word-content-controls-insert-and-change-dropdown-list-content-control
+  name: Manage dropdown list content controls
+  fileName: insert-and-change-dropdown-list-content-control.yaml
+  description: 'Inserts, updates, and deletes dropdown list content controls.'
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/10-content-controls/insert-and-change-dropdown-list-content-control.yaml
+  group: Content Controls
+  api_set:
+    WordApi: '1.9'
+- id: word-content-controls-get-change-tracking-states
+  name: Get change tracking states of content controls
+  fileName: get-change-tracking-states.yaml
+  description: Gets change tracking states of content controls.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/10-content-controls/get-change-tracking-states.yaml
+  group: Content Controls
+  api_set:
+    WordApi: '1.5'
 - id: word-images-insert-and-get-pictures
   name: Use inline pictures
   fileName: insert-and-get-pictures.yaml
@@ -44,13 +146,31 @@
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/15-images/insert-and-get-pictures.yaml
   group: Images
   api_set:
-    WordApi: '1.1'
+    WordApiDesktop: '1.1'
 - id: word-lists-insert-list
   name: Create a list
   fileName: insert-list.yaml
   description: Inserts a new list into the document.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/20-lists/insert-list.yaml
+  group: Lists
+  api_set:
+    WordApi: '1.3'
+- id: word-lists-manage-styles
+  name: Get list styles
+  fileName: manage-list-styles.yaml
+  description: This sample shows how to get the list styles in the current document.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/20-lists/manage-list-styles.yaml
+  group: Lists
+  api_set:
+    WordApiDesktop: '1.1'
+- id: word-lists-organize-list
+  name: Organize a list
+  fileName: organize-list.yaml
+  description: Shows how to create and organize a list.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/20-lists/organize-list.yaml
   group: Lists
   api_set:
     WordApi: '1.3'
@@ -107,7 +227,7 @@
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/25-paragraph/paragraph-properties.yaml
   group: Paragraph
   api_set:
-    WordApi: '1.2'
+    WordApi: '1.1'
 - id: word-paragraph-search
   name: Search
   fileName: search.yaml
@@ -126,6 +246,50 @@
   group: Paragraph
   api_set:
     WordApi: '1.1'
+- id: word-paragraph-get-text
+  name: Get text
+  fileName: get-text.yaml
+  description: >-
+    Shows how to get paragraph text, including hidden text and text marked for
+    deletion.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/25-paragraph/get-text.yaml
+  group: Paragraph
+  api_set:
+    WordApi: '1.7'
+- id: word-paragraph-onadded-event
+  name: On adding paragraphs
+  fileName: onadded-event.yaml
+  description: >-
+    Registers, triggers, and deregisters the onParagraphAdded event that tracks
+    the addition of paragraphs.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/25-paragraph/onadded-event.yaml
+  group: Paragraph
+  api_set:
+    WordApi: '1.6'
+- id: word-paragraph-onchanged-event
+  name: On changing content in paragraphs
+  fileName: onchanged-event.yaml
+  description: >-
+    Registers, triggers, and deregisters the onParagraphChanged event that
+    tracks when content is changed in paragraphs.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/25-paragraph/onchanged-event.yaml
+  group: Paragraph
+  api_set:
+    WordApi: '1.6'
+- id: word-paragraph-ondeleted-event
+  name: On deleting paragraphs
+  fileName: ondeleted-event.yaml
+  description: >-
+    Registers, triggers, and deregisters the onParagraphDeleted event that
+    tracks the removal of paragraphs.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/25-paragraph/ondeleted-event.yaml
+  group: Paragraph
+  api_set:
+    WordApi: '1.6'
 - id: word-properties-get-built-in-properties
   name: Built-in document properties
   fileName: get-built-in-properties.yaml
@@ -164,6 +328,15 @@
   group: Ranges
   api_set:
     WordApi: '1.3'
+- id: word-ranges-compare-location
+  name: Compare range locations
+  fileName: compare-location.yaml
+  description: This sample shows how to compare the locations of two ranges.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/35-ranges/compare-location.yaml
+  group: Ranges
+  api_set:
+    WordApi: '1.3'
 - id: word-tables-table-cell-access
   name: Create and access a table
   fileName: table-cell-access.yaml
@@ -184,6 +357,26 @@
   group: Tables
   api_set:
     WordApi: '1.3'
+- id: word-tables-manage-custom-style
+  name: Manage custom table style
+  fileName: manage-custom-style.yaml
+  description: >-
+    Shows how to manage primarily margins and alignments of a custom table style
+    in the current document.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/40-tables/manage-custom-style.yaml
+  group: Tables
+  api_set:
+    WordApiDesktop: '1.1'
+- id: word-document-manage-body
+  name: Manage body
+  fileName: manage-body.yaml
+  description: Shows how to manage the document body.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/manage-body.yaml
+  group: Document
+  api_set:
+    WordApi: '1.2'
 - id: word-document-insert-section-breaks
   name: Add a section
   fileName: insert-section-breaks.yaml
@@ -193,6 +386,18 @@
   group: Document
   api_set:
     WordApi: '1.1'
+- id: word-document-insert-external-document
+  name: Insert an external document
+  fileName: insert-external-document.yaml
+  description: >-
+    Inserts the content (with or without settings) of an external document into
+    the current document. Settings include formatting, change-tracking mode,
+    custom properties, and XML parts.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/insert-external-document.yaml
+  group: Document
+  api_set:
+    WordApi: '1.7'
 - id: word-document-manage-change-tracking
   name: Track changes
   fileName: manage-change-tracking.yaml
@@ -204,8 +409,19 @@
   group: Document
   api_set:
     WordApi: '1.4'
+- id: word-document-manage-tracked-changes
+  name: Manage tracked changes
+  fileName: manage-tracked-changes.yaml
+  description: >-
+    This samples shows how to manage tracked changes, including accepting and
+    rejecting changes.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/manage-tracked-changes.yaml
+  group: Document
+  api_set:
+    WordApi: '1.6'
 - id: word-document-manage-comments
-  name: Comments
+  name: Manage comments
   fileName: manage-comments.yaml
   description: >-
     This sample shows how to perform basic comments operations, including
@@ -225,16 +441,18 @@
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/manage-footnotes.yaml
   group: Document
   api_set:
-    WordApi: '1.4'
+    WordApi: '1.5'
 - id: word-document-manage-fields
-  name: Get fields
+  name: Manage fields
   fileName: manage-fields.yaml
-  description: This sample shows how to get existing fields.
+  description: >-
+    This sample shows how to perform basic operations on fields, including
+    insert, get, and delete.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/manage-fields.yaml
   group: Document
   api_set:
-    WordApi: '1.4'
+    WordApi: '1.5'
 - id: word-document-manage-settings
   name: Manage settings
   fileName: manage-settings.yaml
@@ -246,8 +464,19 @@
   group: Document
   api_set:
     WordApi: '1.4'
+- id: word-document-manage-custom-xml-part-ns
+  name: Manage a CustomXmlPart with the namespace
+  fileName: manage-custom-xml-part-ns.yaml
+  description: >-
+    This sample shows how to add, query, replace, edit, and delete a custom XML
+    part in a document.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/manage-custom-xml-part-ns.yaml
+  group: Document
+  api_set:
+    WordApi: '1.4'
 - id: word-document-manage-custom-xml-part
-  name: Manage a CustomXmlPart
+  name: Manage a CustomXmlPart without the namespace
   fileName: manage-custom-xml-part.yaml
   description: >-
     This sample shows how to add, query, edit, and delete a custom XML part in a
@@ -257,6 +486,55 @@
   group: Document
   api_set:
     WordApi: '1.4'
+- id: word-document-manage-styles
+  name: Manage styles
+  fileName: manage-styles.yaml
+  description: >-
+    This sample shows how to perform operations on the styles in the current
+    document and how to add and delete custom styles.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/manage-styles.yaml
+  group: Document
+  api_set:
+    WordApiDesktop: '1.1'
+- id: word-document-get-external-styles
+  name: Get styles from external document
+  fileName: get-external-styles.yaml
+  description: This sample shows how to get styles from an external document.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/get-external-styles.yaml
+  group: Document
+  api_set:
+    WordApi: '1.5'
+- id: word-document-save-close
+  name: Manage document save and close
+  fileName: save-close.yaml
+  description: Shows how to manage saving and closing document.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/save-close.yaml
+  group: Document
+  api_set:
+    WordApi: '1.5'
+- id: word-document-manage-annotations
+  name: Manage annotations
+  fileName: manage-annotations.yaml
+  description: >-
+    Shows how to leverage the Writing Assistance API to manage annotations and
+    use annotation events.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/manage-annotations.yaml
+  group: Document
+  api_set:
+    WordApi: '1.8'
+- id: word-document-compare-documents
+  name: Compare documents
+  fileName: compare-documents.yaml
+  description: Compares two documents (the current one and a specified external one).
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/50-document/compare-documents.yaml
+  group: Document
+  api_set:
+    WordApiDesktop: '1.1'
 - id: word-scenarios-doc-assembly
   name: Document assembly
   fileName: doc-assembly.yaml
@@ -275,23 +553,23 @@
   group: Scenarios
   api_set:
     WordApi: '1.3'
-- id: word-content-control-ondeleted-event
-  name: Delete content controls
-  fileName: content-control-ondeleted-event.yaml
+- id: word-insert-and-change-content-controls
+  name: Content control basics
+  fileName: insert-and-change-content-controls.yaml
+  description: 'Inserts, updates, and retrieves content controls.'
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/99-preview-apis/insert-and-change-content-controls.yaml
+  group: Preview APIs
+  api_set:
+    WordApi: '1.9'
+- id: word-manage-comments
+  name: Manage comments
+  fileName: manage-comments.yaml
   description: >-
-    Register, trigger, and deregister onDeleted event that tracks the removal of
-    content controls.
+    This sample shows how to perform operations on comments (including insert,
+    reply, get, edit, resolve, and delete) and use comment events.
   rawUrl: >-
-    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/99-preview-apis/content-control-ondeleted-event.yaml
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/99-preview-apis/manage-comments.yaml
   group: Preview APIs
   api_set:
-    WordApi: '1.5'
-- id: word-insert-and-get-pictures
-  name: Use inline pictures
-  fileName: insert-and-get-pictures.yaml
-  description: Inserts and gets inline pictures.
-  rawUrl: >-
-    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/word/99-preview-apis/insert-and-get-pictures.yaml
-  group: Preview APIs
-  api_set:
-    WordApi: '1.1'
+    WordApi: '1.9'

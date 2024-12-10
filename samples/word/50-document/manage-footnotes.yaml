@@ -1,46 +1,46 @@
-order: 4
+order: 7
 id: word-document-manage-footnotes
 name: Manage footnotes
 description: 'This sample shows how to perform basic footnote operations, including insert, get, and delete.'
 host: WORD
 api_set:
-    WordApi: '1.4'
+    WordApi: '1.5'
 script:
     content: |
-        $("#insert-footnote").click(() => tryCatch(insertFootnote));
-        $("#get-reference").click(() => tryCatch(getReference));
-        $("#get-footnote-type").click(() => tryCatch(getFootnoteType));
-        $("#get-footnote-body").click(() => tryCatch(getFootnoteBody));
-        $("#get-next-footnote").click(() => tryCatch(getNextFootnote));
-        $("#delete-footnote").click(() => tryCatch(deleteFootnote));
-        $("#get-first-footnote").click(() => tryCatch(getFirstFootnote));
-        $("#get-footnotes-from-body").click(() => tryCatch(getFootnotesFromBody));
-        $("#get-footnotes-from-range").click(() => tryCatch(getFootnotesFromRange));
-        $("#setup").click(() => tryCatch(setup));
+        $("#insert-footnote").on("click", () => tryCatch(insertFootnote));
+        $("#get-reference").on("click", () => tryCatch(getReference));
+        $("#get-footnote-type").on("click", () => tryCatch(getFootnoteType));
+        $("#get-footnote-body").on("click", () => tryCatch(getFootnoteBody));
+        $("#get-next-footnote").on("click", () => tryCatch(getNextFootnote));
+        $("#delete-footnote").on("click", () => tryCatch(deleteFootnote));
+        $("#get-first-footnote").on("click", () => tryCatch(getFirstFootnote));
+        $("#get-footnotes-from-body").on("click", () => tryCatch(getFootnotesFromBody));
+        $("#get-footnotes-from-range").on("click", () => tryCatch(getFootnotesFromRange));
+        $("#setup").on("click", () => tryCatch(setup));
 
         async function insertFootnote() {
-          // Set a footnote on the selected content.
+          // Sets a footnote on the selected content.
           await Word.run(async (context) => {
             const text = $("#input-footnote")
               .val()
               .toString();
-            const footnote = context.document.getSelection().insertFootnote(text);
+            const footnote: Word.NoteItem = context.document.getSelection().insertFootnote(text);
             await context.sync();
 
             console.log("Inserted footnote.");
           });
         }
         async function getReference() {
-          // Select the footnote's reference mark in the document body.
+          // Selects the footnote's reference mark in the document body.
           await Word.run(async (context) => {
-            const footnotes = context.document.body.footnotes;
+            const footnotes: Word.NoteItemCollection = context.document.body.footnotes;
             footnotes.load("items/reference");
             await context.sync();
 
             const referenceNumber = $("#input-reference").val();
             const mark = (referenceNumber as number) - 1;
-            const item = footnotes.items[mark];
-            const reference = item.reference;
+            const item: Word.NoteItem = footnotes.items[mark];
+            const reference: Word.Range = item.reference;
             reference.select();
             await context.sync();
 
@@ -48,15 +48,15 @@ script:
           });
         }
         async function getFootnoteType() {
-          // Get the referenced note's item type and body type, which are both "Footnote".
+          // Gets the referenced note's item type and body type, which are both "Footnote".
           await Word.run(async (context) => {
-            const footnotes = context.document.body.footnotes;
+            const footnotes: Word.NoteItemCollection = context.document.body.footnotes;
             footnotes.load("items");
             await context.sync();
 
             const referenceNumber = $("#input-reference").val();
             const mark = (referenceNumber as number) - 1;
-            const item = footnotes.items[mark];
+            const item: Word.NoteItem = footnotes.items[mark];
             console.log(`Note type of footnote ${referenceNumber}: ${item.type}`);
 
             item.body.load("type");
@@ -66,15 +66,15 @@ script:
           });
         }
         async function getFootnoteBody() {
-          // Get the text of the referenced footnote.
+          // Gets the text of the referenced footnote.
           await Word.run(async (context) => {
-            const footnotes = context.document.body.footnotes;
+            const footnotes: Word.NoteItemCollection = context.document.body.footnotes;
             footnotes.load("items/body");
             await context.sync();
 
             const referenceNumber = $("#input-reference").val();
             const mark = (referenceNumber as number) - 1;
-            const footnoteBody = footnotes.items[mark].body.getRange();
+            const footnoteBody: Word.Range = footnotes.items[mark].body.getRange();
             footnoteBody.load("text");
             await context.sync();
 
@@ -82,23 +82,23 @@ script:
           });
         }
         async function getNextFootnote() {
-          // Select the next footnote in the document body.
+          // Selects the next footnote in the document body.
           await Word.run(async (context) => {
-            const footnotes = context.document.body.footnotes;
+            const footnotes: Word.NoteItemCollection = context.document.body.footnotes;
             footnotes.load("items/reference");
             await context.sync();
 
             const referenceNumber = $("#input-reference").val();
             const mark = (referenceNumber as number) - 1;
-            const reference = footnotes.items[mark].getNext().reference;
+            const reference: Word.Range = footnotes.items[mark].getNext().reference;
             reference.select();
             console.log("Selected is the next footnote: " + (mark + 2));
           });
         }
         async function deleteFootnote() {
-          // Delete this referenced footnote.
+          // Deletes this referenced footnote.
           await Word.run(async (context) => {
-            const footnotes = context.document.body.footnotes;
+            const footnotes: Word.NoteItemCollection = context.document.body.footnotes;
             footnotes.load("items");
             await context.sync();
 
@@ -111,17 +111,17 @@ script:
           });
         }
         async function getFirstFootnote() {
-          // Get the first footnote in the document body and select its reference mark.
+          // Gets the first footnote in the document body and select its reference mark.
           await Word.run(async (context) => {
-            const reference = context.document.body.footnotes.getFirst().reference;
+            const reference: Word.Range = context.document.body.footnotes.getFirst().reference;
             reference.select();
             console.log("The first footnote is selected.");
           });
         }
         async function getFootnotesFromBody() {
-          // Get the footnotes in the document body.
+          // Gets the footnotes in the document body.
           await Word.run(async (context) => {
-            const footnotes = context.document.body.footnotes;
+            const footnotes: Word.NoteItemCollection = context.document.body.footnotes;
             footnotes.load("length");
             await context.sync();
 
@@ -129,9 +129,9 @@ script:
           });
         }
         async function getFootnotesFromRange() {
-          // Get the footnotes in the selected document range.
+          // Gets the footnotes in the selected document range.
           await Word.run(async (context) => {
-            const footnotes = context.document.getSelection().footnotes;
+            const footnotes: Word.NoteItemCollection = context.document.getSelection().footnotes;
             footnotes.load("length");
             await context.sync();
 
@@ -139,29 +139,23 @@ script:
           });
         }
         async function setup() {
-          // Check for requirement set support and set two paragraphs of sample text.
-          if (!Office.context.requirements.isSetSupported("WordApiOnline", "1.1")) {
-            console.error(
-              "This version of Word doesn't support WordApiOnline 1.1 and so doesn't currently support the footnotes APIs."
-            );
-            return;
-          }
+          // Set two paragraphs of sample text.
           await Word.run(async (context) => {
-            const body = context.document.body;
+            const body: Word.Body = context.document.body;
             body.clear();
             body.insertParagraph(
-              "Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.",
+              "Do you want to create a solution that extends the functionality of Word? You can use the Office Add-ins platform to extend Word clients running on the web, on a Windows desktop, or on a Mac.",
               "Start"
             );
             body.paragraphs
               .getLast()
               .insertText(
-                "To make your document look professionally produced, Word provides header, footer, cover page, and text box designs that complement each other. For example, you can add a matching Online cover page, header, and sidebar. Click Insert and then choose the Online elements you want from the different Online galleries.",
+                "Use add-in commands to extend the Word UI and launch task panes that run JavaScript that interacts with the content in a Word document. Any code that you can run in a browser can run in a Word add-in. Add-ins that interact with content in a Word document create requests to act on Word objects and synchronize object state.",
                 "Replace"
               );
           });
         }
-        /** Default helper for invoking an action and handling errors. */
+        // Default helper for invoking an action and handling errors.
         async function tryCatch(callback) {
           try {
             await callback();
@@ -173,21 +167,18 @@ script:
     language: typescript
 template:
     content: |-
-        <section class="ms-font-m">
+        <section class="ms-Fabric ms-font-m">
             <p>This sample shows basic operations using footnotes.</p>
-        <p><b>Important</b>: The WordApiOnline 1.1 requirement set is needed for this sample. See <a target="_blank"
-                href="https://learn.microsoft.com/javascript/api/requirement-sets/word/word-api-requirement-sets">Word JavaScript
-                API requirement sets</a> for supported Word clients.</p>
         </section>
 
-        <section class="setup ms-font-m">
+        <section class="ms-Fabric setup ms-font-m">
             <h3>Set up</h3>
             <button id="setup" class="ms-Button">
             <span class="ms-Button-label">Add sample text</span>
           </button>
         </section>
 
-        <section class="samples ms-font-m">
+        <section class="ms-Fabric samples ms-font-m">
             <h3>Try it out</h3>
             <h4>Insert footnote</h4>
             <p>1. Select text in the document.</p>
@@ -248,11 +239,11 @@ style:
         }
     language: css
 libraries: |
-    https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+    https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js
     @types/office-js
 
-    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
-    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+    office-ui-fabric-core@11.1.0/dist/css/fabric.min.css
+    office-ui-fabric-js@1.5.0/dist/css/fabric.components.min.css
 
     core-js@2.4.1/client/core.min.js
     @types/core-js

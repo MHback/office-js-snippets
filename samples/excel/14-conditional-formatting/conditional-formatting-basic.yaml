@@ -7,17 +7,17 @@ api_set:
     ExcelApi: '1.6'
 script:
     content: |-
-        $("#setup").click(() => tryCatch(setup));
-        $("#apply-color-scale-format").click(() => tryCatch(applyColorScaleFormat));
-        $("#apply-preset-format").click(() => tryCatch(applyPresetFormat));
-        $("#apply-databar-format").click(() => tryCatch(applyDataBarFormat));
-        $("#apply-icon-set-format").click(() => tryCatch(applyIconSetFormat));
-        $("#apply-text-format").click(() => tryCatch(applyTextFormat));
-        $("#apply-cell-value-format").click(() => tryCatch(applyCellValueFormat));
-        $("#apply-top-bottom-format").click(() => tryCatch(applyTopBottomFormat));
-        $("#apply-custom-format").click(() => tryCatch(applyCustomFormat));
-        $("#list-conditional-formats").click(() => tryCatch(listConditionalFormats));
-        $("#clear-all-conditional-formats").click(() => tryCatch(clearAllConditionalFormats));
+        $("#setup").on("click", () => tryCatch(setup));
+        $("#apply-color-scale-format").on("click", () => tryCatch(applyColorScaleFormat));
+        $("#apply-preset-format").on("click", () => tryCatch(applyPresetFormat));
+        $("#apply-databar-format").on("click", () => tryCatch(applyDataBarFormat));
+        $("#apply-icon-set-format").on("click", () => tryCatch(applyIconSetFormat));
+        $("#apply-text-format").on("click", () => tryCatch(applyTextFormat));
+        $("#apply-cell-value-format").on("click", () => tryCatch(applyCellValueFormat));
+        $("#apply-top-bottom-format").on("click", () => tryCatch(applyTopBottomFormat));
+        $("#apply-custom-format").on("click", () => tryCatch(applyCustomFormat));
+        $("#list-conditional-formats").on("click", () => tryCatch(listConditionalFormats));
+        $("#clear-all-conditional-formats").on("click", () => tryCatch(clearAllConditionalFormats));
 
         async function applyColorScaleFormat() {
             await Excel.run(async (context) => {
@@ -274,18 +274,18 @@ script:
     language: typescript
 template:
     content: |-
-        <section id="main" class="ms-font-m">
+        <section id="main" class="ms-Fabric ms-font-m">
             <p>This sample shows how to apply conditional formatting to ranges.</p>
         </section>
 
-        <section id="main" class="setup ms-font-m">
+        <section id="main" class="ms-Fabric setup ms-font-m">
             <h3>Set up</h3>
             <button id="setup" class="ms-Button">
                 <span class="ms-Button-label">Add sample data</span>
             </button>
         </section>
 
-        <section id="main" class="samples ms-font-m">
+        <section id="main" class="ms-Fabric samples ms-font-m">
             <h3>Try it out</h3>
             <label class="ms-font-s">Add color scale to temperature table.</label>
             <button id="apply-color-scale-format" class="ms-Button">
@@ -342,11 +342,11 @@ style:
         }
     language: css
 libraries: |
-    https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+    https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js
     @types/office-js
 
-    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
-    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+    office-ui-fabric-core@11.1.0/dist/css/fabric.min.css
+    office-ui-fabric-js@1.5.0/dist/css/fabric.components.min.css
 
     core-js@2.4.1/client/core.min.js
     @types/core-js

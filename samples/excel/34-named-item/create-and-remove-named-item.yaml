@@ -7,13 +7,13 @@ api_set:
     ExcelApi: '1.4'
 script:
     content: |-
-        $("#setup").click(() => tryCatch(setup));
+        $("#setup").on("click", () => tryCatch(setup));
 
-        $("#add-name-to-total").click(() => tryCatch(addNameToTotal));
-        $("#add-name-to-header").click(() => tryCatch(addNameToHeader));
-        $("#format-named-range").click(() => tryCatch(formatRangeByName));
-        $("#remove-name").click(() => tryCatch(removeName));
-        $("#list-named-items").click(() => tryCatch(listNamedItems));
+        $("#add-name-to-total").on("click", () => tryCatch(addNameToTotal));
+        $("#add-name-to-header").on("click", () => tryCatch(addNameToHeader));
+        $("#format-named-range").on("click", () => tryCatch(formatRangeByName));
+        $("#remove-name").on("click", () => tryCatch(removeName));
+        $("#list-named-items").on("click", () => tryCatch(listNamedItems));
 
         async function addNameToTotal() {
             await Excel.run(async (context) => {
@@ -78,13 +78,15 @@ script:
 
         async function listNamedItems() {
             await Excel.run(async (context) => {
+                // Log all the named items in the active worksheet.
                 const namedItems = context.workbook.worksheets.getActiveWorksheet().names.load();
                 await context.sync();
 
                 console.log("This worksheet contains " + namedItems.items.length + " named items.");
 
                 for (let i = 0; i < namedItems.items.length; i++) {
-                    console.log(JSON.stringify(namedItems.items[i])) + "\n";
+                    const namedItem : Excel.NamedItem = namedItems.items[i];
+                    console.log(JSON.stringify(namedItem)) + "\n";
                 }
 
                 await context.sync();
@@ -181,11 +183,11 @@ script:
     language: typescript
 template:
     content: |
-        <section class="ms-font-m">
+        <section class="ms-Fabric ms-font-m">
             <p>This sample shows how to create, access, and delete named items.</p>
         </section>
 
-        <section class="samples ms-font-m">
+        <section class="ms-Fabric samples ms-font-m">
             <h3>Setup</h3>
             <button id="setup" class="ms-Button">
                 <span class="ms-Button-label">Add sample data</span>
@@ -223,11 +225,11 @@ style:
         }
     language: css
 libraries: |
-    https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+    https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js
     @types/office-js
 
-    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
-    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+    office-ui-fabric-core@11.1.0/dist/css/fabric.min.css
+    office-ui-fabric-js@1.5.0/dist/css/fabric.components.min.css
 
     core-js@2.4.1/client/core.min.js
     @types/core-js

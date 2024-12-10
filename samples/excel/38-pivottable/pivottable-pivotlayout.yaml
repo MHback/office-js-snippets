@@ -7,17 +7,17 @@ api_set:
     ExcelAPI: '1.13'
 script:
     content: |
-        $("#setup").click(() => tryCatch(setup)); 
-        $("#change-layout").click(() => tryCatch(changeLayout)); 
-        $("#add-alt-text").click(() => tryCatch(addAltText)); 
-        $("#add-line-spacing").click(() => tryCatch(addLineSpacing)); 
-        $("#repeat-item-labels").click(() => tryCatch(repeatItemLabels)); 
-        $("#toggle-field-headers").click(() => tryCatch(toggleFieldHeaders)); 
-        $("#toggle-grand-totals").click(() => tryCatch(toggleGrandTotals)); 
-        $("#set-empty-cell-text").click(() => tryCatch(setEmptyCellText)); 
-        $("#toggle-fill-empty-cells").click(() => tryCatch(toggleFillEmptyCells)); 
-        $("#toggle-auto-format").click(() => tryCatch(toggleAutoFormat)); 
-        $("#toggle-preserve-formatting").click(() => tryCatch(togglePreserveFormatting));
+        $("#setup").on("click", () => tryCatch(setup)); 
+        $("#change-layout").on("click", () => tryCatch(changeLayout)); 
+        $("#add-alt-text").on("click", () => tryCatch(addAltText)); 
+        $("#add-line-spacing").on("click", () => tryCatch(addLineSpacing)); 
+        $("#repeat-item-labels").on("click", () => tryCatch(repeatItemLabels)); 
+        $("#toggle-field-headers").on("click", () => tryCatch(toggleFieldHeaders)); 
+        $("#toggle-grand-totals").on("click", () => tryCatch(toggleGrandTotals)); 
+        $("#set-empty-cell-text").on("click", () => tryCatch(setEmptyCellText)); 
+        $("#toggle-fill-empty-cells").on("click", () => tryCatch(toggleFillEmptyCells)); 
+        $("#toggle-auto-format").on("click", () => tryCatch(toggleAutoFormat)); 
+        $("#toggle-preserve-formatting").on("click", () => tryCatch(togglePreserveFormatting));
 
         async function changeLayout() {
           await Excel.run(async (context) => {
@@ -249,17 +249,17 @@ script:
     language: typescript
 template:
     content: |-
-        <section class="ms-font-m">
+        <section class="ms-Fabric ms-font-m">
           <p>This sample shows how to work with the PivotLayout class to display the PivotTable.</p>
         </section>
 
-        <section class="setup ms-font-m">
+        <section class="ms-Fabric setup ms-font-m">
           <h3>Set up</h3>
           <button id="setup" class="ms-Button">
                 <span class="ms-Button-label">Setup sample</span>
             </button>
         </section>
-        <section class="samples ms-font-m">
+        <section class="ms-Fabric samples ms-font-m">
           <h3>Try it out</h3>
           <button id="change-layout" class="ms-Button">
               <span class="ms-Button-label">Change layout type</span>
@@ -310,11 +310,11 @@ style:
         }
     language: css
 libraries: |
-    https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+    https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js
     @types/office-js
 
-    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
-    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+    office-ui-fabric-core@11.1.0/dist/css/fabric.min.css
+    office-ui-fabric-js@1.5.0/dist/css/fabric.components.min.css
 
     core-js@2.4.1/client/core.min.js
     @types/core-js

@@ -40,11 +40,11 @@
   api_set:
     Mailbox: '1.1'
 - id: outlook-item-body-add-inline-base64-image
-  name: Add inline base64 image to message or appointment body (Compose)
+  name: Add inline Base64-encoded image to message or appointment body (Compose)
   fileName: add-inline-base64-image.yaml
   description: >-
-    Add an inline base64 image to the body of a message or appointment being
-    composed.
+    Add an inline Base64-encoded image to the body of a message or appointment
+    being composed.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/20-item-body/add-inline-base64-image.yaml
   group: Item Body
@@ -77,6 +77,17 @@
   group: Item Body
   api_set:
     Mailbox: '1.1'
+- id: outlook-item-body-prepend-text-on-send
+  name: Prepend text to item body on send
+  fileName: prepend-text-on-send.yaml
+  description: >-
+    Prepends text to the beginning of the message or appointment's body once
+    it's sent.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/20-item-body/prepend-text-on-send.yaml
+  group: Item Body
+  api_set:
+    Mailbox: '1.13'
 - id: outlook-item-save-and-close-close
   name: Close the item
   fileName: close.yaml
@@ -86,6 +97,15 @@
   group: Item Save And Close
   api_set:
     Mailbox: '1.3'
+- id: outlook-close-async
+  name: Close the current message and discard changes (Message Compose)
+  fileName: close-async.yaml
+  description: Closes the current message and discards any unsaved changes when specified.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/25-item-save-and-close/close-async.yaml
+  group: Item Save And Close
+  api_set:
+    Mailbox: '1.14'
 - id: outlook-item-save-and-close-save
   name: Save the item
   fileName: save.yaml
@@ -236,13 +256,13 @@
   name: Work with notification messages
   fileName: add-getall-remove.yaml
   description: >-
-    Adds different kinds of notification messages, gets all, and replaces and
-    removes an individual notification message.
+    Adds different kinds of notification messages, gets all notifications, and
+    replaces and removes an individual notification message.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/35-notifications/add-getall-remove.yaml
   group: Notifications
   api_set:
-    Mailbox: '1.3'
+    Mailbox: '1.10'
 - id: outlook-attachments-attachments-compose
   name: Manipulate attachments (Item Compose)
   fileName: attachments-compose.yaml
@@ -253,7 +273,7 @@
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/40-attachments/attachments-compose.yaml
   group: Attachments
   api_set:
-    Mailbox: '1.1'
+    Mailbox: '1.8'
 - id: outlook-attachments-get-attachment-content
   name: Get attachment content
   fileName: get-attachment-content.yaml
@@ -365,7 +385,7 @@
   api_set:
     Mailbox: '1.9'
 - id: outlook-display-items-display-reply-with-attachments
-  name: 'Create a reply, with attachments'
+  name: Create a reply with attachments
   fileName: display-reply-with-attachments.yaml
   description: Opens a reply message forms and adds sample attachments.
   rawUrl: >-
@@ -373,37 +393,39 @@
   group: Display Items
   api_set:
     Mailbox: '1.9'
-- id: outlook-work-with-client-signatures
-  name: Work with client signatures (Compose)
-  fileName: work-with-client-signatures.yaml
+- id: outlook-sensitivity-labels-sensitivity-labels-catalog
+  name: Work with the sensitivity labels catalog
+  fileName: sensitivity-labels-catalog.yaml
   description: >-
-    Check if the client signature is enabled, disable the client signature, get
-    the compose type, and set a signature in Compose mode.
+    Determines if sensitivity labels are enabled on the mailbox and retrieves
+    all available labels from the catalog.
   rawUrl: >-
-    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/60-event-based-activation/work-with-client-signatures.yaml
-  group: Event Based Activation
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/60-sensitivity-label/sensitivity-labels-catalog.yaml
+  group: Sensitivity Label
   api_set:
-    Mailbox: '1.10'
-- id: outlook-event-based-activation-session-data-apis
-  name: Work with session data APIs (Compose)
-  fileName: session-data-apis.yaml
-  description: 'Set, get, get all, remove, and clear session data in Compose mode.'
+    Mailbox: '1.13'
+- id: outlook-sensitivity-labels-sensitivity-label
+  name: Work with sensitivity labels (Compose)
+  fileName: sensitivity-label.yaml
+  description: >-
+    Gets and sets the sensitivity label on a message or appointment in compose
+    mode.
   rawUrl: >-
-    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/60-event-based-activation/session-data-apis.yaml
-  group: Event Based Activation
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/60-sensitivity-label/sensitivity-label.yaml
+  group: Sensitivity Label
   api_set:
-    Mailbox: '1.11'
+    Mailbox: '1.13'
 - id: outlook-delegates-and-shared-folders-get-shared-properties
-  name: Perform an operation as delegate
+  name: Identify a shared folder or shared mailbox context
   fileName: get-shared-properties.yaml
   description: >-
-    Gets shared properties for an item, checks delegate permissions and performs
-    an operation as delegate.
+    Identifies whether the current mail item is in a shared folder or shared
+    mailbox by getting its properties.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/65-delegates-and-shared-folders/get-shared-properties.yaml
   group: Delegates And Shared Folders
   api_set:
-    Mailbox: '1.8'
+    Mailbox: '1.13'
 - id: outlook-mime-headers-get-internet-headers-message-read
   name: Get internet headers
   fileName: get-internet-headers-message-read.yaml
@@ -411,51 +433,34 @@
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/70-mime-headers/get-internet-headers-message-read.yaml
   group: Mime Headers
-  api_set: {}
+  api_set:
+    Mailbox: '1.8'
 - id: outlook-mime-headers-manage-custom-internet-headers-message-compose
   name: Work with custom internet headers
   fileName: manage-custom-internet-headers-message-compose.yaml
-  description: 'Set, get, and remove custom internet headers on a message in Compose mode.'
+  description: >-
+    Sets, gets, and removes custom internet headers on a message in Compose
+    mode.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/70-mime-headers/manage-custom-internet-headers-message-compose.yaml
   group: Mime Headers
   api_set:
     Mailbox: '1.8'
-- id: outlook-entities-and-regex-matches-basic-entities
-  name: Entities (Item Read)
-  fileName: basic-entities.yaml
-  description: Gets extracted entities.
-  rawUrl: >-
-    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/75-entities-and-regex-matches/basic-entities.yaml
-  group: Entities And Regex Matches
-  api_set:
-    Mailbox: '1.1'
-- id: outlook-entities-and-regex-matches-contextual
-  name: 'Entities and Regex matches (Item Read, contextual)'
+- id: outlook-regex-matches-contextual
+  name: 'Get regex matches (Item Read, contextual)'
   fileName: contextual.yaml
-  description: >-
-    Gets extracted entities and regex matches when the add-in is opened as a
-    contextual add-in.
+  description: Gets regex matches when the add-in is opened as a contextual add-in.
   rawUrl: >-
-    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/75-entities-and-regex-matches/contextual.yaml
-  group: Entities And Regex Matches
-  api_set:
-    Mailbox: '1.1'
-- id: outlook-entities-and-regex-matches-selected
-  name: 'Selected entities and Regex matches (Item Read, contextual)'
-  fileName: selected.yaml
-  description: Gets selected entities and regex matches.
-  rawUrl: >-
-    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/75-entities-and-regex-matches/selected.yaml
-  group: Entities And Regex Matches
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/75-regex-matches/contextual.yaml
+  group: Regex Matches
   api_set:
     Mailbox: '1.6'
 - id: outlook-tokens-and-service-calls-ids-and-urls
   name: Endpoint URLs and item IDs
   fileName: ids-and-urls.yaml
   description: >-
-    Retrieves and displays REST and EWS endpoint URLs and item IDs, and converts
-    item IDs for different protocols.
+    Retrieves and displays the Exchange Web Services (EWS) endpoint URL and item
+    IDs, and converts item IDs for different protocols.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/85-tokens-and-service-calls/ids-and-urls.yaml
   group: Tokens And Service Calls
@@ -464,7 +469,9 @@
 - id: outlook-tokens-and-service-calls-user-identity-token
   name: Get a user identity token
   fileName: user-identity-token.yaml
-  description: Gets a user identity token to use in authentication flows.
+  description: >-
+    Gets a user identity token to use for authentication flows in an Exchange
+    on-premises environment.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/85-tokens-and-service-calls/user-identity-token.yaml
   group: Tokens And Service Calls
@@ -474,24 +481,15 @@
   name: Get a callback token
   fileName: user-callback-token.yaml
   description: >-
-    Gets a callback token to use for calling outlook services from add-in's
-    backend service.
+    Gets a callback token to call Outlook services from an add-in's backend
+    service.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/85-tokens-and-service-calls/user-callback-token.yaml
   group: Tokens And Service Calls
   api_set:
     Mailbox: '1.1'
-- id: outlook-tokens-and-service-calls-basic-rest-cors
-  name: Get a message using REST
-  fileName: basic-rest-cors.yaml
-  description: Gets a message using REST without any back-end code.
-  rawUrl: >-
-    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/85-tokens-and-service-calls/basic-rest-cors.yaml
-  group: Tokens And Service Calls
-  api_set:
-    Mailbox: '1.5'
 - id: outlook-tokens-and-service-calls-make-ews-request-async
-  name: Get a message using EWS
+  name: Get a message using Exchange Web Services (EWS)
   fileName: make-ews-request-async.yaml
   description: Gets a message using EWS without any back-end code.
   rawUrl: >-
@@ -500,7 +498,7 @@
   api_set:
     Mailbox: '1.1'
 - id: outlook-tokens-and-service-calls-send-message-using-make-ews-request-async
-  name: Send a message using EWS
+  name: Send a message using Exchange Web Services (EWS)
   fileName: send-message-using-make-ews-request-async.yaml
   description: Sends a message using EWS without any back-end code.
   rawUrl: >-
@@ -509,11 +507,11 @@
   api_set:
     Mailbox: '1.1'
 - id: outlook-tokens-and-service-calls-get-icaluid-as-organizer
-  name: Get an appointment's iCalUId as an organizer
+  name: Get an appointment's iCalUId as the organizer
   fileName: get-icaluid-as-organizer.yaml
   description: >-
-    Uses EWS to get an appointment's iCalUId value where the user is the
-    organizer.
+    Uses Exchange Web Services (EWS) to get an appointment's iCalUId value where
+    the user is the organizer.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/85-tokens-and-service-calls/get-icaluid-as-organizer.yaml
   group: Tokens And Service Calls
@@ -523,22 +521,13 @@
   name: Get an appointment's iCalUId as an attendee
   fileName: get-icaluid-as-attendee.yaml
   description: >-
-    Uses EWS to get an appointment's iCalUId value where the user is the
-    attendee.
+    Uses Exchange Web Services (EWS) to get an appointment's iCalUId value where
+    the user is an attendee.
   rawUrl: >-
     https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/85-tokens-and-service-calls/get-icaluid-as-attendee.yaml
   group: Tokens And Service Calls
   api_set:
     Mailbox: '1.1'
-- id: outlook-tokens-and-service-calls-item-id-compose
-  name: Get an item ID in compose mode
-  fileName: item-id-compose.yaml
-  description: 'Gets an item ID in compose mode, to use in certain delegate scenarios.'
-  rawUrl: >-
-    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/85-tokens-and-service-calls/item-id-compose.yaml
-  group: Tokens And Service Calls
-  api_set:
-    Mailbox: '1.8'
 - id: outlook-other-item-apis-get-subject-read
   name: Get the subject (Read)
   fileName: get-subject-read.yaml
@@ -701,14 +690,117 @@
   group: Other Item APIs
   api_set:
     Mailbox: '1.1'
-- id: outlook-calendar-properties-apis
-  name: Work with calendar properties APIs (Compose)
-  fileName: calendar-properties-apis.yaml
+- id: outlook-other-item-apis-work-with-client-signatures
+  name: Work with client signatures (Compose)
+  fileName: work-with-client-signatures.yaml
   description: >-
-    Gets and sets isAllDayEvent and sensitivity properties of an appointment in
-    Compose mode.
+    Checks if the client signature is enabled, disables the client signature,
+    gets the compose type, and sets a signature in Compose mode.
   rawUrl: >-
-    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/99-preview-apis/calendar-properties-apis.yaml
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/90-other-item-apis/work-with-client-signatures.yaml
+  group: Other Item APIs
+  api_set:
+    Mailbox: '1.10'
+- id: outlook-other-item-apis-session-data-apis
+  name: Work with session data APIs (Compose)
+  fileName: session-data-apis.yaml
+  description: 'Sets, gets, gets all, removes, and clears session data in Compose mode.'
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/90-other-item-apis/session-data-apis.yaml
+  group: Other Item APIs
+  api_set:
+    Mailbox: '1.11'
+- id: outlook-delay-message-delivery
+  name: Get and set message delivery (Message Compose)
+  fileName: delay-message-delivery.yaml
+  description: Gets and sets the delivery date and time of a message in compose mode.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/90-other-item-apis/delay-message-delivery.yaml
+  group: Other Item APIs
+  api_set:
+    Mailbox: '1.13'
+- id: outlook-other-item-apis-get-message-properties
+  name: 'Get properties of selected messages (Message Compose, Message Read)'
+  fileName: get-message-properties.yaml
+  description: Gets the properties of multiple selected messages.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/90-other-item-apis/get-message-properties.yaml
+  group: Other Item APIs
+  api_set:
+    Mailbox: '1.14'
+- id: outlook-other-item-apis-get-set-sensitivity-level
+  name: Get and set the sensitivity level (Appointment Organizer)
+  fileName: get-set-sensitivity-level.yaml
+  description: Gets and sets the sensitivity level of an appointment being composed.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/90-other-item-apis/get-set-sensitivity-level.yaml
+  group: Other Item APIs
+  api_set:
+    Mailbox: '1.14'
+- id: outlook-get-eml-format
+  name: Get the Base64-encoded EML format of a message (Message Read)
+  fileName: get-eml-format.yaml
+  description: Gets the Base64-encoded EML format of a message in read mode.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/90-other-item-apis/get-eml-format.yaml
+  group: Other Item APIs
+  api_set:
+    Mailbox: '1.14'
+- id: outlook-get-in-reply-to
+  name: Get the ID of the message being replied to (Message Compose)
+  fileName: get-in-reply-to.yaml
+  description: Retrieves the ID of the message being replied to by the current message.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/90-other-item-apis/get-in-reply-to.yaml
+  group: Other Item APIs
+  api_set:
+    Mailbox: '1.14'
+- id: outlook-get-conversation-index
+  name: Get the position of a message in a conversation (Message Compose)
+  fileName: get-conversation-index.yaml
+  description: >-
+    Retrieves the Base64-encoded position of the current message in a
+    conversation thread.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/90-other-item-apis/get-conversation-index.yaml
+  group: Other Item APIs
+  api_set:
+    Mailbox: '1.14'
+- id: outlook-get-item-class-async
+  name: Get item class (Message Compose)
+  fileName: get-item-class-async.yaml
+  description: Retrieves the item class property of the message being composed.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/90-other-item-apis/get-item-class-async.yaml
+  group: Other Item APIs
+  api_set:
+    Mailbox: '1.14'
+- id: outlook-other-item-apis-item-id-compose
+  name: Get an item ID in compose mode
+  fileName: item-id-compose.yaml
+  description: Gets an item ID in compose mode.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/90-other-item-apis/item-id-compose.yaml
+  group: Other Item APIs
+  api_set:
+    Mailbox: '1.8'
+- id: outlook-get-set-isalldayevent
+  name: Get and set the isAllDayEvent property (Appointment Organizer)
+  fileName: get-set-isalldayevent.yaml
+  description: Gets and sets the isAllDayEvent property of an appointment being composed.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/99-preview-apis/get-set-isalldayevent.yaml
+  group: Preview APIs
+  api_set:
+    Mailbox: preview
+- id: outlook-set-displayed-body-subject
+  name: Temporarily set the body or subject displayed in a message (Message Read)
+  fileName: set-displayed-body-subject.yaml
+  description: >-
+    Temporarily sets the content displayed in the body or subject of a message
+    in read mode.
+  rawUrl: >-
+    https://raw.githubusercontent.com/OfficeDev/office-js-snippets/main/samples/outlook/99-preview-apis/set-displayed-body-subject.yaml
   group: Preview APIs
   api_set:
     Mailbox: preview

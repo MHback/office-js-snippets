@@ -7,8 +7,8 @@ api_set:
     ExcelApi: '1.16'
 script:
     content: |-
-        $("#setup").click(() => tryCatch(setup));
-        $("#addEntitiesToTable").click(() => tryCatch(addEntitiesToTable));
+        $("#setup").on("click", () => tryCatch(setup));
+        $("#addEntitiesToTable").on("click", () => tryCatch(addEntitiesToTable));
 
         async function addEntitiesToTable() {
           // This function retrieves data for each of the existing products in the table, 
@@ -86,6 +86,9 @@ script:
               }
             },
             layouts: {
+              compact: {
+                icon: Excel.EntityCompactLayoutIcons.shoppingBag
+              },
               card: {
                 title: { property: "Product Name" },
                 sections: [
@@ -145,6 +148,11 @@ script:
                   type: Excel.CellValueType.string,
                   basicValue: category.description || ""
                 }
+              }, 
+              layouts: {
+                compact: {
+                  icon: Excel.EntityCompactLayoutIcons.branch
+                },        
               }
             };
 
@@ -176,6 +184,9 @@ script:
                 },
               },
               layouts: {
+                compact: {
+                  icon: Excel.EntityCompactLayoutIcons.boxMultiple
+                },
                 card: {
                   title: { property: "Company Name" },
                   sections: [
@@ -557,22 +568,23 @@ script:
     language: typescript
 template:
     content: |-
-        <section class="ms-font-m">
+        <section class="ms-Fabric ms-font-m">
           <p>This sample shows how to create entity values for each row in a table. An entity value is a container for data types, similar to an object in object-oriented programming.</p>
           <p>In particular, this sample highlights the card layout options of an entity value, including the title, an image, collapsible sections, and nested entity values.</p>
         </section>
-        <section class="setup ms-font-m">
+        <section class="ms-Fabric setup ms-font-m">
           <h3>Set up</h3>
           <button id="setup" class="ms-Button">
             <span class="ms-Button-label">Create table</span>
           </button>
         </section>
-        <section class="samples ms-font-m">
+        <section class="ms-Fabric samples ms-font-m">
           <h3>Try it out</h3>
           <button id="addEntitiesToTable" class="ms-Button">
             <span class="ms-Button-label">Add entity values</span>
           </button>
           <p>To see the entity value, click the icon to the left of the title in the <strong>Product</strong> column after selecting <strong>Add entity values</strong>.</p>
+          <p><em>Note: In Excel on Mac, nested icons (such as the icons that display inside an entity card) always display as the default icon, even when another icon is selected with the API. This is a known bug.</em></p>
         </section>
     language: html
 style:
@@ -589,11 +601,11 @@ style:
         }
     language: css
 libraries: |
-    https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+    https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js
     @types/office-js
 
-    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
-    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+    office-ui-fabric-core@11.1.0/dist/css/fabric.min.css
+    office-ui-fabric-js@1.5.0/dist/css/fabric.components.min.css
 
     core-js@2.4.1/client/core.min.js
     @types/core-js
